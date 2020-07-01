@@ -26,7 +26,7 @@
 TODO:
 
 - [ ] 编写一个使用`tf2-keras-yolo3`训练自己的数据集的详细教程。
-- [ ] 提取各脚本中常用配置参数到统一文件
+- [x] 提取各脚本中常用配置参数到统一文件
 
 更多信息请访问 [深度学习下的目标检测算法——TensorFlow 2.0下的YOLOv3实践](https://blog.csdn.net/aaronjny/article/details/103658254) (https://blog.csdn.net/aaronjny/article/details/103658254)
 

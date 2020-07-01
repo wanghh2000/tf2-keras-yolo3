@@ -4,29 +4,30 @@ Class definition of YOLO_v3 style detection model on image and video
 """
 
 import colorsys
+import os
 from timeit import default_timer as timer
 
 import numpy as np
 import tensorflow as tf
-from tensorflow.keras.models import load_model
-from tensorflow.keras.layers import Input
 from PIL import Image, ImageFont, ImageDraw
+from tensorflow.keras.layers import Input
+from tensorflow.keras.models import load_model
+from tensorflow.keras.utils import multi_gpu_model
 
+import settings
 from yolo3.model import yolo_eval, yolo_body, tiny_yolo_body
 from yolo3.utils import letterbox_image
-import os
-from tensorflow.keras.utils import multi_gpu_model
 
 
 class YOLO(object):
     _defaults = {
-        "model_path": 'model_data/yolo.h5',
-        "anchors_path": 'model_data/yolo_anchors.txt',
-        "classes_path": 'model_data/coco_classes.txt',
-        "score": 0.3,
-        "iou": 0.45,
-        "model_image_size": (416, 416),
-        "gpu_num": 1,
+        "model_path": settings.DEFAULT_MODEL_PATH,
+        "anchors_path": settings.DEFAULT_ANCHORS_PATH,
+        "classes_path": settings.DEFAULT_CLASSES_PATH,
+        "score": settings.SCORE,
+        "iou": settings.IOU,
+        "model_image_size": settings.MODEL_IMAGE_SIZE,
+        "gpu_num": settings.GPU_NUM,
     }
 
     @classmethod
