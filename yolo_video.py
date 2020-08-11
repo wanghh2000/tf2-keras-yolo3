@@ -3,17 +3,17 @@ import argparse
 from yolo import YOLO, detect_video
 from PIL import Image
 
-def detect_img(yolo):
-    while True:
-        img = input('Input image filename:')
-        try:
-            image = Image.open(img)
-        except:
-            print('Open Error! Try again!')
-            continue
-        else:
-            r_image = yolo.detect_image(image)
-            r_image.show()
+def detect_img(yolo, img):
+    #while True:
+        # img = input('Input image filename:')
+    try:
+        image = Image.open(img)
+    except:
+        print('Open Error! Try again!')
+        #continue
+    else:
+        r_image = yolo.detect_image(image)
+        r_image.show()
 
 FLAGS = None
 
@@ -47,6 +47,12 @@ if __name__ == '__main__':
         '--image', default=False, action="store_true",
         help='Image detection mode, will ignore all positional arguments'
     )
+
+    parser.add_argument(
+        '--camera', default=False, action="store_true",
+        help='Camera detection mode, will ignore all positional arguments'
+    )
+
     '''
     Command line positional arguments -- for video detection mode
     '''
@@ -68,8 +74,10 @@ if __name__ == '__main__':
         """
         print("Image detection mode")
         if "input" in FLAGS:
-            print(" Ignoring remaining command line arguments: " + FLAGS.input + "," + FLAGS.output)
-        detect_img(YOLO(**vars(FLAGS)))
+            #print(" Ignoring remaining command line arguments: " + FLAGS.input + "," + FLAGS.output)
+            detect_img(YOLO(**vars(FLAGS)), FLAGS.input)
+    elif FLAGS.camera:
+        detect_video(YOLO(**vars(FLAGS)), 0, FLAGS.output)
     elif "input" in FLAGS:
         detect_video(YOLO(**vars(FLAGS)), FLAGS.input, FLAGS.output)
     else:

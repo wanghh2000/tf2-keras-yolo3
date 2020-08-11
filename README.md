@@ -37,7 +37,11 @@ This is a fork and modification of [qqwweee / keras-yolo3](https://github.com/qq
 
 Attached is the README of [qqwweee / keras-yolo3](https://github.com/qqwweee/keras-yolo3).
 
+Test:
 
+python yolo_video.py --image --input C:/21.jpg
+
+python yolo_video.py --input C:/123.mp4
 
 ------------------------
 
