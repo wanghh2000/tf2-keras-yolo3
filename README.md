@@ -42,6 +42,7 @@ Attached is the README of [qqwweee / keras-yolo3](https://github.com/qqwweee/ker
 python yolo_video.py --image --input C:/21.jpg
 
 python yolo_video.py --input C:/123.mp4
+python yolo_video.py --input C:/001.mp4
 
 python yolo_video.py --camera
 
